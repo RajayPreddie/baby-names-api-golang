@@ -1,11 +1,25 @@
-package handlers
+package api
 
 import (
+	"babyname-api/config"
 	"babyname-api/database"
 	"babyname-api/models"
 	"encoding/json"
+	"github.com/joho/godotenv"
+	"log"
 	"net/http"
 )
+
+func init() {
+	// Load environment variables from .env file
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatalf("Error loading .env file")
+	}
+
+	// Initialize configurations
+	config.Init()
+}
 
 func GetBabyNames(w http.ResponseWriter, r *http.Request) {
 	var babyNames []models.BabyName
