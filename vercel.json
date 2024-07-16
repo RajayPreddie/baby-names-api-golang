@@ -9,27 +9,27 @@
   "routes": [
     {
       "src": "/api/babynames",
-      "dest": "/main.go"
+      "dest": "/api/babyname.go"
     },
     {
       "src": "/api/babynames/id",
-      "dest": "/main.go"
+      "dest": "/api/babyname.go"
     },
     {
       "src": "/api/babynames/year",
-      "dest": "/main.go"
+      "dest": "/api/babyname.go"
     },
     {
       "src": "/api/babynames/gender",
-      "dest": "/main.go"
+      "dest": "/api/babyname.go"
     },
     {
       "src": "/api/babynames/ethnicity",
-      "dest": "/main.go"
+      "dest": "/api/babyname.go"
     },
     {
       "src": "/swagger/(.*)",
-      "dest": "/main.go"
+      "dest": "/api/babyname.go"
     }
   ]
 }
