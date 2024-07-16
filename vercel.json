@@ -1,0 +1,35 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "main.go",
+      "use": "@vercel/go"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/babynames",
+      "dest": "/main.go"
+    },
+    {
+      "src": "/api/babynames/id",
+      "dest": "/main.go"
+    },
+    {
+      "src": "/api/babynames/year",
+      "dest": "/main.go"
+    },
+    {
+      "src": "/api/babynames/gender",
+      "dest": "/main.go"
+    },
+    {
+      "src": "/api/babynames/ethnicity",
+      "dest": "/main.go"
+    },
+    {
+      "src": "/swagger/(.*)",
+      "dest": "/main.go"
+    }
+  ]
+}
