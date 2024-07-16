@@ -25,7 +25,7 @@ func main() {
 	}
 
 	database.Connect()
-
+	http.HandleFunc("/api/index", api.Handler)
 	http.HandleFunc("/api/babynames", api.GetBabyNames)
 	http.HandleFunc("/api/babynames/year", api.GetBabyNamesByYear)
 	http.HandleFunc("/api/babynames/gender", api.GetBabyNamesByGender)
