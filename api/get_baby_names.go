@@ -1,4 +1,4 @@
-package main
+package api
 
 import (
 	"babyname-api/config"
@@ -8,7 +8,11 @@ import (
 	"net/http"
 )
 
-func getBabyNames(w http.ResponseWriter, r *http.Request) {
+func init() {
+	config.Init()
+}
+
+func GetBabyNamesHandler(w http.ResponseWriter, r *http.Request) {
 	var babyNames []models.BabyName
 	result := database.DB.Find(&babyNames)
 	if result.Error != nil {
@@ -17,10 +21,4 @@ func getBabyNames(w http.ResponseWriter, r *http.Request) {
 	}
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(babyNames)
-}
-
-func main() {
-	config.Init()
-	http.HandleFunc("/", getBabyNames)
-	http.ListenAndServe(":8080", nil)
 }
