@@ -7,29 +7,11 @@
     }
   ],
   "routes": [
-    {
-      "src": "/api/babynames",
-      "dest": "/api/babyname.go"
-    },
-    {
-      "src": "/api/babynames/id",
-      "dest": "/api/babyname.go"
-    },
-    {
-      "src": "/api/babynames/year",
-      "dest": "/api/babyname.go"
-    },
-    {
-      "src": "/api/babynames/gender",
-      "dest": "/api/babyname.go"
-    },
-    {
-      "src": "/api/babynames/ethnicity",
-      "dest": "/api/babyname.go"
-    },
-    {
-      "src": "/swagger/(.*)",
-      "dest": "/api/babyname.go"
-    }
+    { "src": "/api/babynames", "dest": "/main.go" },
+    { "src": "/api/babynames/id", "dest": "/main.go" },
+    { "src": "/api/babynames/year", "dest": "/main.go" },
+    { "src": "/api/babynames/gender", "dest": "/main.go" },
+    { "src": "/api/babynames/ethnicity", "dest": "/main.go" },
+    { "src": "/swagger/(.*)", "dest": "/main.go" }
   ]
 }
