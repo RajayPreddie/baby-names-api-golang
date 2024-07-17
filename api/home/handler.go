@@ -1,4 +1,4 @@
-package main
+package handler
 
 import (
 	"babyname-api/config"
@@ -11,6 +11,8 @@ import (
 )
 
 func Handler(w http.ResponseWriter, r *http.Request) {
+	// Connect to the database
+	config.Init()
 	// Get the database instance
 	db := database.GetDB()
 	log.Printf("Database instance: %v", db)
@@ -34,11 +36,4 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		log.Printf("Error encoding response: %v", err)
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
-}
-
-func main() {
-	// Connect to the database
-	config.Init()
-	http.HandleFunc("/", Handler)
-	log.Fatal(http.ListenAndServe(":8080", nil))
 }
