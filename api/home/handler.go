@@ -7,11 +7,21 @@ import (
 	"log"
 
 	"net/http"
+
+	"github.com/joho/godotenv"
 )
 
 func Handler(w http.ResponseWriter, r *http.Request) {
 
 	var babyNames []models.BabyName
+	// Load environment variables from .env file
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatalf("Error loading .env file")
+	}
+
+	// Initialize configurations
+	database.Connect()
 	// Check if the database is connected
 	if database.DB == nil {
 		log.Fatalf("Database connection is nil")
