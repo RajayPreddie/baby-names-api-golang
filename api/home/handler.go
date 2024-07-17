@@ -23,8 +23,6 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 
-	// Initialize configurations
-	database.Connect()
 	// Check if the database is connected
 	if database.DB == nil {
 		log.Fatalf("Database connection is nil")
