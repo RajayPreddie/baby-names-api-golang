@@ -1,6 +1,7 @@
-package home
+package main
 
 import (
+	"babyname-api/config"
 	"babyname-api/database"
 	"babyname-api/models"
 	"encoding/json"
@@ -33,4 +34,11 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		log.Printf("Error encoding response: %v", err)
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
+}
+
+func main() {
+	// Connect to the database
+	config.Init()
+	http.HandleFunc("/", Handler)
+	log.Fatal(http.ListenAndServe(":8080", nil))
 }
