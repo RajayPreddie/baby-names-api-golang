@@ -10,28 +10,16 @@ import (
 	"babyname-api/api/get_baby_names_by_gender"
 	"babyname-api/api/get_baby_names_by_year"
 	"babyname-api/api/home"
+	"babyname-api/config"
 
-	"babyname-api/database"
 	_ "babyname-api/docs"
-	"github.com/joho/godotenv"
+
 	"github.com/swaggo/http-swagger"
 )
 
 func main() {
-	// Conditionally load .env file only during local development
-	if os.Getenv("VERCEL_ENV") == "" {
-		err := godotenv.Load()
-		if err != nil {
-			log.Fatalf("Error loading .env file")
-		}
-	}
-	// Initialize configurations
-	database.Connect()
-	// Check if the database is connected
-	if database.DB == nil {
-		log.Fatalf("Database connection is nil")
-	}
-
+	// Initialize configurations and connect to the database
+	config.Init()
 	// Set up API routes
 	http.HandleFunc("/", home.Handler)
 	http.HandleFunc("/api/babynames", get_baby_names.Handler)
