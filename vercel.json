@@ -27,6 +27,6 @@
     { "src": "/api/babynames/year", "dest": "/api/get_baby_names_by_year/handler.go" },
     { "src": "/api/babynames/gender", "dest": "/api/get_baby_names_by_gender/handler.go" },
     { "src": "/api/babynames/ethnicity", "dest": "/api/get_baby_names_by_ethnicity/handler.go" },
-    { "src": "/", "dest": "/api/index.go" }
+    { "src": "/", "dest": "/api/index/handler.go" }
   ]
 }
