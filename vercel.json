@@ -2,7 +2,23 @@
   "version": 2,
   "builds": [
     {
-      "src": "api/*.go",
+      "src": "api/get_baby_names.go",
+      "use": "@vercel/go"
+    },
+    {
+      "src": "api/get_baby_names_by_year.go",
+      "use": "@vercel/go"
+    },
+    {
+      "src": "api/get_baby_names_by_gender.go",
+      "use": "@vercel/go"
+    },
+    {
+      "src": "api/get_baby_names_by_ethnicity.go",
+      "use": "@vercel/go"
+    },
+    {
+      "src": "api/index.go",
       "use": "@vercel/go"
     }
   ],
