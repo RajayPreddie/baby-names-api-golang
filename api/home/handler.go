@@ -1,18 +1,14 @@
 package handler
 
 import (
-	"babyname-api/config"
 	"babyname-api/database"
 	"babyname-api/models"
 	"encoding/json"
 	"log"
-
 	"net/http"
 )
 
 func Handler(w http.ResponseWriter, r *http.Request) {
-	// Connect to the database
-	config.Init()
 	// Get the database instance
 	db := database.GetDB()
 	log.Printf("Database instance: %v", db)
