@@ -29,7 +29,7 @@ func main() {
 	config.Init()
 
 	// Set up API routes
-	http.HandleFunc("/", index.Handler)
+	http.HandleFunc("/", home.Handler)
 	http.HandleFunc("/api/babynames", get_baby_names.Handler)
 	http.HandleFunc("/api/babynames/year", get_baby_names_by_year.Handler)
 	http.HandleFunc("/api/babynames/gender", get_baby_names_by_gender.Handler)

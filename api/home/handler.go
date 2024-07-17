@@ -1,4 +1,4 @@
-package index
+package home
 
 import (
 	"net/http"
