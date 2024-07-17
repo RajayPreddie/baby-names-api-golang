@@ -25,7 +25,7 @@ func main() {
 
 	// Set up API routes
 	http.HandleFunc("/", api.Handler)
-	http.HandleFunc("/api/babynames", api.GetBabyNames)
+	http.HandleFunc("/api/babynames", api.GetBabyNamesHandler)
 	http.HandleFunc("/api/babynames/year", api.GetBabyNamesByYear)
 	http.HandleFunc("/api/babynames/gender", api.GetBabyNamesByGender)
 	http.HandleFunc("/api/babynames/ethnicity", api.GetBabyNamesByEthnicity)

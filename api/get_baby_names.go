@@ -8,7 +8,7 @@ import (
 	"net/http"
 )
 
-func GetBabyNames(w http.ResponseWriter, r *http.Request) {
+func GetBabyNamesHandler(w http.ResponseWriter, r *http.Request) {
 	var babyNames []models.BabyName
 	result := database.DB.Find(&babyNames)
 	if result.Error != nil {
@@ -17,8 +17,4 @@ func GetBabyNames(w http.ResponseWriter, r *http.Request) {
 	}
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(babyNames)
-}
-
-func GetBabyNamesHandler(w http.ResponseWriter, r *http.Request) {
-	GetBabyNames(w, r)
 }
