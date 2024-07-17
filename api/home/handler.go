@@ -19,7 +19,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Database connection error", http.StatusInternalServerError)
 		return
 	}
-
+	// Attempt to obtain the result
 	var babyNames []models.BabyName
 	result := database.DB.Find(&babyNames)
 	if result.Error != nil {
