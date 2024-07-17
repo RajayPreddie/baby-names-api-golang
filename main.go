@@ -18,12 +18,13 @@ import (
 )
 
 func main() {
-	// Load environment variables from .env file
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatalf("Error loading .env file")
+	// Conditionally load .env file only during local development
+	if os.Getenv("VERCEL_ENV") == "" {
+		err := godotenv.Load()
+		if err != nil {
+			log.Fatalf("Error loading .env file")
+		}
 	}
-
 	// Initialize configurations
 	database.Connect()
 	// Check if the database is connected

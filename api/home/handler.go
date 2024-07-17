@@ -5,6 +5,7 @@ import (
 	"babyname-api/models"
 	"encoding/json"
 	"log"
+	"os"
 
 	"net/http"
 
@@ -14,10 +15,12 @@ import (
 func Handler(w http.ResponseWriter, r *http.Request) {
 
 	var babyNames []models.BabyName
-	// Load environment variables from .env file
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatalf("Error loading .env file: %v", err)
+	// Conditionally load .env file only during local development
+	if os.Getenv("VERCEL_ENV") == "" {
+		err := godotenv.Load()
+		if err != nil {
+			log.Fatalf("Error loading .env file")
+		}
 	}
 
 	// Initialize configurations
