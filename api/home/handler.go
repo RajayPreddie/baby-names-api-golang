@@ -17,7 +17,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	// Load environment variables from .env file
 	err := godotenv.Load()
 	if err != nil {
-		log.Fatalf("Error loading .env file")
+		log.Fatalf("Error loading .env file: %v", err)
 	}
 
 	// Initialize configurations
