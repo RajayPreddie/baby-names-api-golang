@@ -2,30 +2,14 @@
   "version": 2,
   "builds": [
     {
-      "src": "api/get_baby_names.go",
-      "use": "@vercel/go"
-    },
-    {
-      "src": "api/get_baby_names_by_gender.go",
-      "use": "@vercel/go"
-    },
-    {
-      "src": "api/get_baby_names_by_year.go",
-      "use": "@vercel/go"
-    },
-    {
-      "src": "api/get_baby_names_by_ethnicity.go",
-      "use": "@vercel/go"
-    },
-    {
-      "src": "api/index.go",
+      "src": "api/*.go",
       "use": "@vercel/go"
     }
   ],
   "routes": [
     { "src": "/api/babynames", "dest": "/api/get_baby_names.go" },
-    { "src": "/api/babynames/gender", "dest": "/api/get_baby_names_by_gender.go" },
     { "src": "/api/babynames/year", "dest": "/api/get_baby_names_by_year.go" },
+    { "src": "/api/babynames/gender", "dest": "/api/get_baby_names_by_gender.go" },
     { "src": "/api/babynames/ethnicity", "dest": "/api/get_baby_names_by_ethnicity.go" },
     { "src": "/", "dest": "/api/index.go" }
   ]
