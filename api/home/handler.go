@@ -1,4 +1,4 @@
-package handler
+package home
 
 import (
 	"babyname-api/database"
