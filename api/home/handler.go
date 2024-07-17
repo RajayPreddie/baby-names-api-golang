@@ -10,6 +10,9 @@ import (
 )
 
 func Handler(w http.ResponseWriter, r *http.Request) {
+	// Log the database state
+	log.Printf("Database connection status: %v", database.DB)
+
 	// Check if the database is connected
 	if database.DB == nil {
 		log.Println("Database connection is nil")

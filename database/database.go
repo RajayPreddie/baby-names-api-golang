@@ -19,6 +19,10 @@ var (
 func Connect() {
 	once.Do(func() {
 		dsn := os.Getenv("DB_DSN")
+		if dsn == "" {
+			log.Fatal("DB_DSN environment variable is not set")
+		}
+
 		var err error
 		DB, err = gorm.Open(postgres.Open(dsn), &gorm.Config{
 			Logger: logger.Default.LogMode(logger.Silent),
