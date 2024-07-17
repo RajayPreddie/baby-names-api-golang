@@ -1,4 +1,4 @@
-package api
+package get_baby_names
 
 import (
 	"babyname-api/database"
@@ -8,10 +8,9 @@ import (
 	"net/http"
 )
 
-func GetBabyNamesByGender(w http.ResponseWriter, r *http.Request) {
-	gender := r.URL.Query().Get("gender")
+func Handler(w http.ResponseWriter, r *http.Request) {
 	var babyNames []models.BabyName
-	result := database.DB.Where("gender = ?", gender).Find(&babyNames)
+	result := database.DB.Find(&babyNames)
 	if result.Error != nil {
 		http.Error(w, result.Error.Error(), http.StatusInternalServerError)
 		return

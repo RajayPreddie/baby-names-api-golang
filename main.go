@@ -5,7 +5,12 @@ import (
 	"net/http"
 	"os"
 
-	"babyname-api/api"
+	"babyname-api/api/get_baby_names"
+	"babyname-api/api/get_baby_names_by_ethnicity"
+	"babyname-api/api/get_baby_names_by_gender"
+	"babyname-api/api/get_baby_names_by_year"
+	"babyname-api/api/index"
+
 	"babyname-api/config"
 
 	_ "babyname-api/docs"
@@ -24,11 +29,11 @@ func main() {
 	config.Init()
 
 	// Set up API routes
-	http.HandleFunc("/", api.Handler)
-	http.HandleFunc("/api/babynames", api.GetBabyNamesHandler)
-	http.HandleFunc("/api/babynames/year", api.GetBabyNamesByYear)
-	http.HandleFunc("/api/babynames/gender", api.GetBabyNamesByGender)
-	http.HandleFunc("/api/babynames/ethnicity", api.GetBabyNamesByEthnicity)
+	http.HandleFunc("/", index.Handler)
+	http.HandleFunc("/api/babynames", get_baby_names.Handler)
+	http.HandleFunc("/api/babynames/year", get_baby_names_by_year.Handler)
+	http.HandleFunc("/api/babynames/gender", get_baby_names_by_gender.Handler)
+	http.HandleFunc("/api/babynames/ethnicity", get_baby_names_by_ethnicity.Handler)
 
 	// Serve the Swagger UI at /swagger/
 	http.Handle("/swagger/", httpSwagger.WrapHandler)

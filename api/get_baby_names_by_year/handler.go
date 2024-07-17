@@ -1,4 +1,4 @@
-package api
+package get_baby_names_by_year
 
 import (
 	"babyname-api/database"
@@ -8,9 +8,10 @@ import (
 	"net/http"
 )
 
-func GetBabyNamesHandler(w http.ResponseWriter, r *http.Request) {
+func Handler(w http.ResponseWriter, r *http.Request) {
+	year := r.URL.Query().Get("year")
 	var babyNames []models.BabyName
-	result := database.DB.Find(&babyNames)
+	result := database.DB.Where("birth_year = ?", year).Find(&babyNames)
 	if result.Error != nil {
 		http.Error(w, result.Error.Error(), http.StatusInternalServerError)
 		return
