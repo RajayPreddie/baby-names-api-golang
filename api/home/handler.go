@@ -1,7 +1,6 @@
 package home
 
 import (
-	"babyname-api/config"
 	"babyname-api/database"
 	"babyname-api/models"
 	"encoding/json"
@@ -11,19 +10,19 @@ import (
 )
 
 func Handler(w http.ResponseWriter, r *http.Request) {
-	// Log the database state
-	config.Init()
-	log.Printf("Database connection status: %v", database.DB)
+	// Get the database instance
+	db := database.GetDB()
+	log.Printf("Database instance: %v", db)
 
 	// Check if the database is connected
-	if database.DB == nil {
+	if db == nil {
 		log.Println("Database connection is nil")
 		http.Error(w, "Database connection error", http.StatusInternalServerError)
 		return
 	}
-	// Attempt to obtain the result
+
 	var babyNames []models.BabyName
-	result := database.DB.Find(&babyNames)
+	result := db.Find(&babyNames)
 	if result.Error != nil {
 		log.Printf("Error retrieving baby names: %v", result.Error)
 		http.Error(w, result.Error.Error(), http.StatusInternalServerError)
