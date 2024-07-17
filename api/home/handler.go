@@ -1,6 +1,7 @@
 package home
 
 import (
+	"babyname-api/config"
 	"babyname-api/database"
 	"babyname-api/models"
 	"encoding/json"
@@ -11,6 +12,7 @@ import (
 
 func Handler(w http.ResponseWriter, r *http.Request) {
 	// Log the database state
+	config.Init()
 	log.Printf("Database connection status: %v", database.DB)
 
 	// Check if the database is connected
