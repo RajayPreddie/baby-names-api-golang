@@ -18,3 +18,7 @@ func GetBabyNames(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(babyNames)
 }
+
+func GetBabyNamesHandler(w http.ResponseWriter, r *http.Request) {
+	GetBabyNames(w, r)
+}
