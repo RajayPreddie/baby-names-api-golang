@@ -1,11 +1,20 @@
 package home
 
 import (
-	"net/http"
+	"babyname-api/database"
+	"babyname-api/models"
+	"encoding/json"
 
-	"fmt"
+	"net/http"
 )
 
 func Handler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "<h1>Hello from Go!</h1>")
+	var babyNames []models.BabyName
+	result := database.DB.Find(&babyNames)
+	if result.Error != nil {
+		http.Error(w, result.Error.Error(), http.StatusInternalServerError)
+		return
+	}
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(babyNames)
 }
