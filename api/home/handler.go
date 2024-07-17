@@ -9,6 +9,7 @@ import (
 )
 
 func Handler(w http.ResponseWriter, r *http.Request) {
+
 	var babyNames []models.BabyName
 	result := database.DB.Find(&babyNames)
 	if result.Error != nil {

@@ -1,7 +1,6 @@
 package get_baby_names_by_year
 
 import (
-	"babyname-api/config"
 	"babyname-api/database"
 	"babyname-api/models"
 	"encoding/json"
@@ -10,7 +9,7 @@ import (
 )
 
 func Handler(w http.ResponseWriter, r *http.Request) {
-	config.Init()
+
 	year := r.URL.Query().Get("year")
 	var babyNames []models.BabyName
 	result := database.DB.Where("birth_year = ?", year).Find(&babyNames)

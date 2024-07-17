@@ -11,8 +11,7 @@ import (
 	"babyname-api/api/get_baby_names_by_year"
 	"babyname-api/api/home"
 
-	"babyname-api/config"
-
+	"babyname-api/database"
 	_ "babyname-api/docs"
 	"github.com/joho/godotenv"
 	"github.com/swaggo/http-swagger"
@@ -26,7 +25,11 @@ func main() {
 	}
 
 	// Initialize configurations
-	config.Init()
+	database.Connect()
+	// Check if the database is connected
+	if database.DB == nil {
+		log.Fatalf("Database connection is nil")
+	}
 
 	// Set up API routes
 	http.HandleFunc("/", home.Handler)
