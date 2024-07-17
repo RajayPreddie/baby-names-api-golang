@@ -9,7 +9,7 @@ import (
 	"babyname-api/api/get_baby_names_by_ethnicity"
 	"babyname-api/api/get_baby_names_by_gender"
 	"babyname-api/api/get_baby_names_by_year"
-	"babyname-api/api/index"
+	"babyname-api/api/home"
 
 	"babyname-api/config"
 
