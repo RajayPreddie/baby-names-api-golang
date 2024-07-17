@@ -23,12 +23,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Database connection error", http.StatusInternalServerError)
 		return
 	}
-	// Check if the table exists before attempting to create it
-	if !db.Migrator().HasTable(&models.BabyName{}) {
-		if err := db.Migrator().CreateTable(&models.BabyName{}); err != nil {
-			log.Fatalf("Failed to create table: %v", err)
-		}
-	}
+
 	var babyNames []models.BabyName
 	result := db.Find(&babyNames)
 	if result.Error != nil {
